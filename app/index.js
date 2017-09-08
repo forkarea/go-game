@@ -15,7 +15,27 @@ const board = new Board(Weiqi, game, wgoBoard, WGo.B, WGo.W);
 let white = new Player(board, 'white');
 let black = new Player(board, 'black');
 
-for (let i = 0; i < 20; i++) {
+let i = 0;
+const max = 19 * 19 * 2;
+
+const interval = 0;
+
+function playBlack() {
+  i++;
+  if (i > max) {
+    return;
+  }
   black.play();
-  white.play();
+  setTimeout(playWhite, interval);
 }
+
+function playWhite() {
+  i++;
+  if (i > max) {
+    return;
+  }
+  white.play();
+  setTimeout(playBlack, interval);
+}
+
+playBlack();
