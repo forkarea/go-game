@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-class Player {
+class RandomPlayer {
   constructor(board, color) {
     this.board = board;
     this.color = color;
@@ -17,4 +17,4 @@ class Player {
   }
 }
 
-export default Player;
+export default RandomPlayer;

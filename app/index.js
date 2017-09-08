@@ -3,7 +3,8 @@ import './style.scss';
 import './wgo/wgo';
 import Weiqi from 'weiqi';
 import Board from './Board';
-import Player from './Player';
+import RandomPlayer from './RandomPlayer';
+import BorderPlayer from './BorderPlayer';
 
 const wgoBoard = new WGo.Board(document.getElementById("board"), {
   width: 600,
@@ -12,8 +13,8 @@ const wgoBoard = new WGo.Board(document.getElementById("board"), {
 let game = Weiqi.createGame(19);
 
 const board = new Board(Weiqi, game, wgoBoard, WGo.B, WGo.W);
-let white = new Player(board, 'white');
-let black = new Player(board, 'black');
+let white = new RandomPlayer(board, 'white');
+let black = new BorderPlayer(board, 'black');
 
 let i = 0;
 const max = 19 * 19 * 2;

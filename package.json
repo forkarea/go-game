@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
+    "random-weighted-item": "^1.0.4",
     "weiqi": "^1.0.0"
   }
 }
