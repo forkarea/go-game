@@ -1,9 +1,21 @@
 'use strict';
 import './style.scss';
 import './wgo/wgo';
+import Weiqi from 'weiqi';
+import Board from './Board';
+import Player from './Player';
 
-const board = new WGo.Board(document.getElementById("board"), {
-    width: 600,
+const wgoBoard = new WGo.Board(document.getElementById("board"), {
+  width: 600,
 });
-board.addObject({ x:2,y:3,c:WGo.W })
-board.addObject({ x:1,y:3,c:WGo.B })
+
+let game = Weiqi.createGame(19);
+
+const board = new Board(Weiqi, game, wgoBoard, WGo.B, WGo.W);
+let white = new Player(board, 'white');
+let black = new Player(board, 'black');
+
+for (let i = 0; i < 20; i++) {
+  black.play();
+  white.play();
+}
