@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import getRandomItem from 'random-weighted-item';
 
-const getProbability = i => Math.log(5 + Math.pow(Math.abs(i - 9.5), 1.3));
 
 class BorderPlayer {
   constructor(board, color) {
@@ -9,10 +8,14 @@ class BorderPlayer {
     this.color = color;
   }
 
+  getProbability(i) {
+    return Math.log(5 + Math.pow(Math.abs(i - this.board.getSize() / 2), 1.3));
+  }
+
   play() {
-    const range = _.range(19);
-    const x = getRandomItem(range, getProbability);
-    const y = getRandomItem(range, getProbability);
+    const range = _.range(this.board.getSize());
+    const x = getRandomItem(range, i => this.getProbability(i));
+    const y = getRandomItem(range, i => this.getProbability(i));
 
     const result = this.board.play(this.color, { x, y });
     if (!result) {

@@ -7,8 +7,8 @@ class RandomPlayer {
   }
 
   play() {
-    const x = _.random(19);
-    const y = _.random(19);
+    const x = _.random(this.board.getSize());
+    const y = _.random(this.board.getSize());
 
     const result = this.board.play(this.color, { x, y });
     if (!result) {

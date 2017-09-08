@@ -5,19 +5,21 @@ import Weiqi from 'weiqi';
 import Board from './Board';
 import RandomPlayer from './RandomPlayer';
 import BorderPlayer from './BorderPlayer';
+import config from './config';
 
 const wgoBoard = new WGo.Board(document.getElementById("board"), {
   width: 600,
+  size: config.size,
 });
 
-let game = Weiqi.createGame(19);
+let game = Weiqi.createGame(config.size);
 
-const board = new Board(Weiqi, game, wgoBoard, WGo.B, WGo.W);
+const board = new Board(config.size, Weiqi, game, wgoBoard, WGo.B, WGo.W);
 let white = new RandomPlayer(board, 'white');
 let black = new BorderPlayer(board, 'black');
 
 let i = 0;
-const max = 19 * 19 * 2;
+const max = Math.pow(config.size, 2) * 1.2;
 
 const interval = 0;
 
